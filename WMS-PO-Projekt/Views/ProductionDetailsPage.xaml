@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WmsProdukcja.ViewModels"
+             xmlns:models="clr-namespace:WmsProdukcja.Models"
+             x:Class="WmsProdukcja.Views.ProductionDetailsPage"
+             x:DataType="vm:ProductionDetailsViewModel"
+             Title="Szczegóły Zlecenia">
+
+    <Grid RowDefinitions="Auto, *, Auto, Auto" Padding="10" RowSpacing="10">
+        <VerticalStackLayout Spacing="5" BackgroundColor="#585858" Padding="15">
+    
+            <Grid ColumnDefinitions="*, Auto, Auto, Auto" ColumnSpacing="10">
+    
+                <Label Text="{Binding AktualnaProdukcja.Status, StringFormat='Status: {0}'}" 
+                       FontAttributes="Bold" 
+                       TextColor="White" 
+                       FontSize="18"
+                       VerticalOptions="Center"/>
+
+                <Button Text="Zmień Status" 
+                        Command="{Binding ZmienStatusCommand}"
+                        FontSize="12"
+                        HeightRequest="35"
+                        Padding="10,0"
+                        BackgroundColor="#512BD4" 
+                        TextColor="White"
+                        Grid.Column="1"/>
+
+                <Button Text="Eksport XLS" 
+                        Command="{Binding EksportujExcelCommand}"
+                        FontSize="12"
+                        HeightRequest="35"
+                        Padding="10,0"
+                        BackgroundColor="#107C41" 
+                        TextColor="White"
+                        Grid.Column="2"/>
+                <Button Text="Usuń Zlecenie" 
+                        Command="{Binding UsunAktualnaProdukcjeCommand}"
+                        BackgroundColor="Red" 
+                        TextColor="White"
+                        Grid.Column="3">
+                <Button.Triggers>
+                    <DataTrigger TargetType="Button" 
+                                 Binding="{Binding AktualnaProdukcja.Status}" 
+                                 Value="Zakończone">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                </Button.Triggers>
+                </Button>
+            </Grid>
+
+            <Label Text="{Binding AktualnaProdukcja.TerminRealizacji, StringFormat='Termin: {0:dd.MM.yyyy}'}"
+                   TextColor="#CCCCCC"/>
+    
+            <Label Text="{Binding AktualnaProdukcja.Uwagi}" 
+                   TextColor="#AAAAAA" FontAttributes="Italic"/>
+        </VerticalStackLayout>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Pozycje}">
+            <CollectionView.Header>
+                <Grid ColumnDefinitions="*, 100" Padding="5" BackgroundColor="#585858">
+                    <Label Text="Produkt" FontAttributes="Bold" TextColor="White"/>
+                    <Label Grid.Column="1" Text="Ilość" FontAttributes="Bold" TextColor="White"/>
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PozycjaProdukcji">
+                    <Grid ColumnDefinitions="*, *" Padding="5, 10">
+                        <Label 
+                            Text="{Binding Produkt.Nazwa, FallbackValue='BRAK NAZWY PRODUKTU'}" 
+                            TextColor="White" 
+                            VerticalOptions="Center" />
+                        <Label Grid.Column="1" 
+                               Text="{Binding IloscDocelowa, StringFormat='{0:N2}'}" 
+                               TextColor="#4CAF50" 
+                               FontAttributes="Bold" 
+                               VerticalOptions="Center" 
+                               HorizontalOptions="End"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Frame Grid.Row="2" BorderColor="Black" BackgroundColor="#636363" Padding="10">
+            <VerticalStackLayout Spacing="10">
+                <Label Text="Dodaj pozycję do tego zlecenia:" FontAttributes="Bold"/>
+                
+                <Picker Title="Wybierz Produkt"
+                        TitleColor="White"
+                        BackgroundColor="White"
+                        TextColor="Black"
+                        ItemsSource="{Binding DostepneProdukty}"
+                        SelectedItem="{Binding WybranyProdukt}"
+                        ItemDisplayBinding="{Binding Nazwa}"/>
+                
+                <Grid ColumnDefinitions="*, Auto">
+                    <Entry 
+                        Placeholder="Ilość" 
+                        Keyboard="Numeric" 
+                        Text="{Binding IloscDoProdukcji}" 
+                        BackgroundColor="White"
+                        TextColor="Black"/>
+                    <Button Grid.Column="1" 
+                            Text="Dodaj" 
+                            Command="{Binding DodajPozycjeCommand}" 
+                            BackgroundColor="Green" 
+                            TextColor="White"/>
+                </Grid>
+            </VerticalStackLayout>
+        </Frame>
+        <Frame Grid.Row="3" BorderColor="Gray" Margin="0,20,0,0" Padding="10" BackgroundColor="#222222">
+            <VerticalStackLayout Spacing="5">
+                <Label Text="POTRZEBNE SUROWCE (SUMA):" FontAttributes="Bold" TextColor="Yellow" />
+                <BoxView HeightRequest="1" Color="Gray" />
+        
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding ZbiorczeZapotrzebowanie}"
+                                     Spacing="2">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:ZuzycieSurowca">
+                            <Grid ColumnDefinitions="*, Auto" Padding="0,2">
+                                <Label Text="{Binding Produkt.Nazwa}" TextColor="White" />
+                                <Label Grid.Column="1" 
+                                       Text="{Binding IloscZuzycia, StringFormat='{0:N0} szt.'}" 
+                                       TextColor="LightGreen" 
+                                       FontAttributes="Bold" />
+                            </Grid>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-    x:Class="WMS_PO_Projekt.AppShell"
+    x:Class="WmsProdukcja.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:WMS_PO_Projekt"
-    Title="WMS_PO_Projekt">
+    xmlns:views="clr-namespace:WmsProdukcja.Views"
+    Shell.FlyoutBehavior="Flyout" 
+    Title="WMS Produkcja">
 
-    <ShellContent
-        Title="Strona Główna"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Magazyn i Stany" Icon="icon_warehouse.png">
+        <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Planowanie Produkcji" Icon="icon_production.png">
+        <ShellContent ContentTemplate="{DataTemplate views:ProductionPage}" Route="ProductionPage" />
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Transakcje" Icon="icon_transaction.png">
+        <ShellContent ContentTemplate="{DataTemplate views:TransactionsPage}" Route="TransactionsPage" />
+    </FlyoutItem>
+
 </Shell>

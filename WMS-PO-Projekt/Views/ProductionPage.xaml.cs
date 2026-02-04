@@ -2,23 +2,20 @@
 
 namespace WmsProdukcja.Views;
 
-public partial class MainPage : ContentPage
+public partial class ProductionPage : ContentPage
 {
-    public MainPage(MainViewModel vm)
+    public ProductionPage(ProductionViewModel vm)
     {
         InitializeComponent();
-
         BindingContext = vm;
     }
-    
-    // Automatyczne załadowanie danych przy uruchomieniu aplikacji
+
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        
-        if (BindingContext is MainViewModel vm)
+        if (BindingContext is ProductionViewModel vm)
         {
-            await vm.ZaladujDane();
+            await vm.ZaladujZlecenia();
         }
     }
 }

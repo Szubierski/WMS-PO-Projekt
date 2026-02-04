@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:WmsProdukcja.ViewModels"
+             xmlns:models="clr-namespace:WmsProdukcja.Models"
+             x:Class="WmsProdukcja.Views.ProductionPage"
+             x:DataType="vm:ProductionViewModel">
+
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="10" Padding="10">
+            <Image Source="icon_production.png" HeightRequest="24" WidthRequest="24" VerticalOptions="Center"/>
+            <Label Text="Planowanie Produkcji" FontSize="18" FontAttributes="Bold" VerticalOptions="Center" TextColor="White"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <Grid RowDefinitions="Auto, *, Auto" Padding="10" RowSpacing="10">
+        
+        <Button Text="Odśwież" 
+                Command="{Binding ZaladujZleceniaCommand}" 
+                HorizontalOptions="Start"
+                BackgroundColor="#512BD4" TextColor="White"/>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Zlecenia}" SelectionMode="None">
+            <CollectionView.Header>
+                <Grid ColumnDefinitions="50, 2*, *, *, 80, 80" Padding="5" BackgroundColor="#585858">
+                    <Label Text="ID" FontAttributes="Bold"/>
+                    <Label Grid.Column="1" Text="Uwagi / Opis" FontAttributes="Bold"/>
+                    <Label Grid.Column="2" Text="Termin" FontAttributes="Bold"/>
+                    <Label Grid.Column="3" Text="Status" FontAttributes="Bold"/>
+                    <Label Grid.Column="4" Text="Status" FontAttributes="Bold"/>
+                    <Label Grid.Column="5" Text="Akcja" FontAttributes="Bold"/>
+                </Grid>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Produkcja">
+                    <Grid ColumnDefinitions="50, 2*, *, *, 80, 80" Padding="5">
+                        <Label Text="{Binding IdProdukcji}" VerticalOptions="Center"/>
+                        <Label Grid.Column="1" Text="{Binding Uwagi}" VerticalOptions="Center" LineBreakMode="TailTruncation"/>
+                        
+                        <Label Grid.Column="2" 
+                               Text="{Binding TerminRealizacji, StringFormat='{0:dd.MM.yyyy}'}" 
+                               VerticalOptions="Center"/>
+                        
+                        <Label Grid.Column="3" 
+                               Text="{Binding Status}" 
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+                        <Button Grid.Column="4" 
+                                Text="Szczegóły" 
+                                FontSize="12"
+                                BackgroundColor="#4446F7"
+                                TextColor="White"
+                                HeightRequest="30"
+                                Padding="0"
+                                FontAttributes="Bold"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProductionViewModel}}, Path=IdzDoSzczegolowCommand}"
+                                CommandParameter="{Binding .}"/>
+                        <Button Grid.Column="5" 
+                                Text="Usuń" 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ProductionViewModel}}, Path=UsunProdukcjeCommand}"
+                                CommandParameter="{Binding .}"
+                                BackgroundColor="Red"
+                                TextColor="White"
+                                HeightRequest="35"
+                                Padding="10,0"
+                                VerticalOptions="Center">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" 
+                                             Binding="{Binding Status}" 
+                                             Value="Zakończone">
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            
+            <CollectionView.EmptyView>
+                <Label Text="Brak zaplanowanych zleceń." 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center"
+                       TextColor="Gray"/>
+            </CollectionView.EmptyView>
+        </CollectionView>
+
+        <Button Grid.Row="2"
+                Text="+ Nowe Zlecenie"
+                Command="{Binding NoweZlecenieCommand}"
+                BackgroundColor="Green"
+                TextColor="White"
+                HeightRequest="50"/>
+    </Grid>
+</ContentPage>

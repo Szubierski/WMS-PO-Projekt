@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WmsProdukcja.Views.AddTransactionPage">
+    <ContentPage.Content>
+        <VerticalStackLayout Padding="20" Spacing="15">
+            <Label Text="Nowa Transakcja Ręczna" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+
+            <Entry Placeholder="Nazwa transakcji (np. Dostawa, Zwrot)" Text="{Binding TypTransakcji}" />
+    
+            <Label Text="Wybierz Towar:" />
+            <Picker ItemsSource="{Binding Produkty}" 
+                    ItemDisplayBinding="{Binding Nazwa}"
+                    SelectedItem="{Binding WybranyProdukt}" />
+
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="10">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="Ilość:" />
+                    <Entry Text="{Binding Ilosc}" Keyboard="Numeric" />
+                </VerticalStackLayout>
+        
+                <VerticalStackLayout Grid.Column="1">
+                    <Label Text="Kierunek:" />
+                    <Picker ItemsSource="{Binding Kierunki}" SelectedItem="{Binding WybranyKierunek}" />
+                </VerticalStackLayout>
+            </Grid>
+
+            <Editor Placeholder="Opis/Uwagi" Text="{Binding Uwagi}" HeightRequest="100" />
+
+            <Button Text="Zatwierdź Transakcję" Command="{Binding ZapiszTransakcjeCommand}" 
+                    BackgroundColor="Green" TextColor="White" Margin="0,20,0,0" />
+        </VerticalStackLayout>
+    </ContentPage.Content>
+</ContentPage>

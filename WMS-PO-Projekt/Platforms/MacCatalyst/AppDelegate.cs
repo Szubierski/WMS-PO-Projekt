@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace WMS_PO_Projekt;
+namespace WmsProdukcja;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

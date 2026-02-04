@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:WmsProdukcja.ViewModels"
+             xmlns:models="clr-namespace:WmsProdukcja.Models"
+             xmlns:converters="clr-namespace:WmsProdukcja.Converters" 
+             x:Class="WmsProdukcja.Views.TransactionsPage">
+    
+    <Shell.TitleView>
+        <HorizontalStackLayout VerticalOptions="Center" Spacing="10" Padding="10">
+            <Image Source="icon_transaction.png" 
+                   HeightRequest="24" 
+                   WidthRequest="24" 
+                   VerticalOptions="Center"/>
+            <Label Text="Transakcje" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   VerticalOptions="Center" 
+                   TextColor="White"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Resources>
+        <converters:DirectionToColorConverter x:Key="DirectionToColorConverter" />
+    </ContentPage.Resources>
+    
+    <Grid RowDefinitions="Auto, *, Auto" Padding="10" RowSpacing="10">
+        <HorizontalStackLayout Grid.Row="0" Spacing="10">
+            <Button Text="Odśwież" 
+                    Command="{Binding ZaladujTransakcjeCommand}"
+                    BackgroundColor="#512BD4" 
+                    TextColor="White"/>
+            <Button Text="Nowa Transakcja" 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:TransactionsViewModel}}, Path=PrzejdzDoDodawaniaCommand}"
+                    BackgroundColor="Green" 
+                    TextColor="white"/>
+        </HorizontalStackLayout>
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Transakcje}" Margin="0,10,0,0">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Transakcja">
+                    <Frame Margin="0,5" Padding="10" BorderColor="Gray">
+                        <VerticalStackLayout>
+                            <Grid ColumnDefinitions="*, Auto">
+                                <Label Text="{Binding TypTransakcji}" FontAttributes="Bold" FontSize="16" />
+                                <Label Grid.Column="1" Text="{Binding DataTransakcji, StringFormat='{0:dd.MM.yyyy HH:mm}'}" TextColor="Gray" />
+                            </Grid>
+                            <Label Text="{Binding Uwagi}" FontAttributes="Italic" TextColor="DimGray" />
+    
+                            <BoxView HeightRequest="1" Color="LightGray" Margin="0,5" />
+
+                            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Pozycje}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="models:PozycjaTransakcji">
+                                        <Grid ColumnDefinitions="*, Auto, Auto" Margin="0, 20" Padding="0,2">
+                                            <Label Text="{Binding Produkt.Nazwa}" TextColor="White" />
+                                            <Label Grid.Column="1" Text="{Binding IloscZmiany}" Margin="10,0" TextColor="White" />
+                                            <Label Grid.Column="2" Text="{Binding Kierunek}" 
+                                                   TextColor="{Binding Kierunek, Converter={StaticResource DirectionToColorConverter}}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace WMS_PO_Projekt;
+namespace WmsProdukcja;
 
 public class Program
 {

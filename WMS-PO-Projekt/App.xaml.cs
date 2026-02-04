@@ -1,4 +1,4 @@
-﻿namespace WMS_PO_Projekt;
+﻿namespace WmsProdukcja;
 
 public partial class App : Application
 {
