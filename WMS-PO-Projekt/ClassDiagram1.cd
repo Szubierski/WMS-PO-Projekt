@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="ViewModels">
+    <Position X="8.733" Y="0.874" Height="0.291" Width="1.023" />
+  </Comment>
+  <Comment CommentText="DataAccess">
+    <Position X="21.96" Y="0.797" Height="0.291" Width="0.815" />
+  </Comment>
+  <Comment CommentText="Models">
+    <Position X="29.581" Y="0.702" Height="0.291" Width="0.7" />
+  </Comment>
+  <Comment CommentText="Views">
+    <Position X="35.75" Y="0.5" Height="0.291" Width="0.7" />
+  </Comment>
+  <Comment CommentText="Resources">
+    <Position X="40.773" Y="0.5" Height="0.291" Width="0.877" />
+  </Comment>
+  <Class Name="WmsProdukcja.ViewModels.AddProductionViewModel">
+    <Position X="3.5" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEBACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\AddProductionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.ViewModels.AddProductViewModel">
+    <Position X="6" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>iAAAQAAAAAhAAAAEAAAAAAAAgAAABAAAAAAAAABAIAA=</HashCode>
+      <FileName>ViewModels\AddProductViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.ViewModels.AddTransactionViewModel">
+    <Position X="8.25" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEAIAAAEBAgAAAAAAAAAAAAIAAAAAABACgAAAQAAA=</HashCode>
+      <FileName>ViewModels\AddTransactionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.ViewModels.BaseViewModel">
+    <Position X="8.25" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.ViewModels.MainViewModel">
+    <Position X="10.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAABAAAAAAAAAAAAAAAAAAAAAQBAggQIAABA=</HashCode>
+      <FileName>ViewModels\MainViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.ViewModels.ProductionDetailsViewModel">
+    <Position X="0.5" Y="3.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CAAEAAAAgAhEAAAkAABAABAJgIAABAACQABAAABAIBA=</HashCode>
+      <FileName>ViewModels\ProductionDetailsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.ViewModels.ProductionViewModel">
+    <Position X="12.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAABAgAAAAAAAAAAAAAAABAAAEBAAAgAAAAA=</HashCode>
+      <FileName>ViewModels\ProductionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.ViewModels.TransactionsViewModel">
+    <Position X="14.75" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAABAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\TransactionsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.Produkt">
+    <Position X="29" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAJAAAEAAAAAAAAAAAAAAAAAAAgAAACAAA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.Surowiec" Collapsed="true">
+    <Position X="27.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.Arkusz" Collapsed="true">
+    <Position X="29" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.Worek" Collapsed="true">
+    <Position X="30.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.DataAccess.WmsDbContext">
+    <Position X="24" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQABAAAAAAAABAIAEAAAAAABABACAAAQACA=</HashCode>
+      <FileName>DataAccess\WmsDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.DataAccess.ExcelService">
+    <Position X="18.75" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>DataAccess\ExcelService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.DataAccess.ImportItem">
+    <Position X="19" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAIAAAgAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataAccess\ExcelService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.Produkcja">
+    <Position X="30.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAEACAAAAAEAABAAAAAAAAAAAAAAAEAAAAAACA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.PozycjaProdukcji">
+    <Position X="27.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAIAgABAAAAAAAAAAAAAgAAAACAAA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.ZuzycieSurowca">
+    <Position X="27.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACBAAAAAAAAABAAAAAAAAAAAAAAAAAACEAA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.StanMagazynowy">
+    <Position X="29" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.ProduktSpecyfikacja">
+    <Position X="30.75" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAaAAA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.Transakcja">
+    <Position X="29" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAABAAAAABAAAAAAAgAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Models.PozycjaTransakcji">
+    <Position X="29" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAkAQAACAAA=</HashCode>
+      <FileName>Models\Entities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.DataAccess.WmsRepository">
+    <Position X="21" Y="1.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAABAAAAAIAAQAAAAAIAAQAAAKgFAJACQIAAAE=</HashCode>
+      <FileName>DataAccess\WmsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.DataAccess.WynikWalidacjiSurowca">
+    <Position X="21.25" Y="6" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAEAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>DataAccess\WmsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.MauiProgram">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MauiProgram.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.AppShell">
+    <Position X="2.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AppShell.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Views.AddProductionPage">
+    <Position X="33.5" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AddProductionPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Views.AddProductPage">
+    <Position X="35.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AddProductPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Views.AddTransactionPage">
+    <Position X="37.25" Y="1.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AddTransactionPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Views.MainPage">
+    <Position X="33.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Views.ProductionDetailsPage">
+    <Position X="35.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ProductionDetailsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Views.ProductionPage">
+    <Position X="37.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ProductionPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Views.TransactionsPage">
+    <Position X="35.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\TransactionsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WmsProdukcja.Converters.DirectionToColorConverter">
+    <Position X="40.25" Y="1.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Resources\DirectionToColorConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
