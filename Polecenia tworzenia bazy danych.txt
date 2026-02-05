@@ -1,0 +1,144 @@
+create schema wms_produkcja_db;
+use wms_produkcja_db;
+
+create table PRODUKCJA
+(
+    id_produkcji      int auto_increment
+        primary key,
+    data_utworzenia   datetime default current_timestamp() null,
+    termin_realizacji datetime                             not null comment 'Ostateczny deadline zlecenia (DO KIEDY ma być zrobione)',
+    status            varchar(50)                          not null comment 'Np. Zaplanowane, W Trakcie, Zakończone',
+    uwagi             text                                 null
+);
+
+create table PRODUKT
+(
+    id_produktu     int auto_increment
+        primary key,
+    nazwa           varchar(255)                         not null,
+    typ_produktu    varchar(50)                          not null comment 'Np. Surowiec Rolka, Wyrób Gotowy Arkusz',
+    data_utworzenia datetime default current_timestamp() null
+);
+
+create table POZYCJA_PRODUKCJI
+(
+    id_pozycji      int auto_increment
+        primary key,
+    id_produkcji    int            not null,
+    id_produktu     int            not null comment 'ID Wyrobu Gotowego z PRODUKT',
+    ilosc_docelowa  decimal(12, 2) not null,
+    data_realizacji datetime       null comment 'Kiedy ta część produkcji została faktycznie ukończona (NULL, jeśli nieukończona)',
+    constraint pozycja_produkcji_ibfk_1
+        foreign key (id_produkcji) references PRODUKCJA (id_produkcji)
+            on update cascade on delete cascade,
+    constraint pozycja_produkcji_ibfk_2
+        foreign key (id_produktu) references PRODUKT (id_produktu)
+            on update cascade
+);
+
+create index id_produkcji
+    on POZYCJA_PRODUKCJI (id_produkcji);
+
+create table PRODUKT_SPECYFIKACJA
+(
+    id_specyfikacji int auto_increment
+        primary key,
+    id_produktu     int            not null,
+    grubosc_mm      decimal(10, 2) null,
+    szerokosc_m     decimal(10, 2) null,
+    dlugosc_m       decimal(10, 2) null,
+    material        varchar(50)    null,
+    constraint produkt_specyfikacja_ibfk_1
+        foreign key (id_produktu) references PRODUKT (id_produktu)
+            on update cascade on delete cascade
+);
+
+create table STAN_MAGAZYNOWY
+(
+    id_stanu              int auto_increment
+        primary key,
+    id_produktu           int                                        not null,
+    aktualna_ilosc        decimal(12, 2) default 0.00                not null,
+    data_ostatniej_zmiany datetime       default current_timestamp() null on update current_timestamp(),
+    constraint id_produktu
+        unique (id_produktu),
+    constraint stan_magazynowy_ibfk_1
+        foreign key (id_produktu) references PRODUKT (id_produktu)
+            on update cascade on delete cascade
+);
+
+create table TRANSAKCJA
+(
+    id_transakcji   int auto_increment
+        primary key,
+    typ_transakcji  varchar(50)                          not null comment 'Np. Przyjęcie, Wydanie, Produkcja',
+    data_transakcji datetime default current_timestamp() null,
+    uwagi           text                                 null
+);
+
+create table POZYCJA_TRANSAKCJI
+(
+    id_pozycji       int auto_increment
+        primary key,
+    id_transakcji    int            not null,
+    id_produktu      int            not null,
+    ilosc_zmiany     decimal(12, 2) not null comment 'Ilość, która wpłynęła (+ wartość) lub wypłynęła (- wartość).',
+    kierunek         varchar(10)    not null comment 'IN lub OUT',
+    cena_jednostkowa decimal(10, 2) null,
+    constraint pozycja_transakcji_ibfk_1
+        foreign key (id_transakcji) references TRANSAKCJA (id_transakcji)
+            on update cascade on delete cascade,
+    constraint pozycja_transakcji_ibfk_2
+        foreign key (id_produktu) references PRODUKT (id_produktu)
+            on update cascade
+);
+
+create index id_transakcji
+    on POZYCJA_TRANSAKCJI (id_transakcji);
+
+create table ZUZYCIE_SUROWCA
+(
+    id_zuzycia    int auto_increment
+        primary key,
+    id_produkcji  int            not null,
+    id_produktu   int            not null comment 'ID Surowca z PRODUKT',
+    ilosc_zuzycia decimal(12, 2) not null comment 'Planowana ilość surowca do zużycia',
+    constraint zuzycie_surowca_ibfk_1
+        foreign key (id_produkcji) references PRODUKCJA (id_produkcji)
+            on update cascade on delete cascade,
+    constraint zuzycie_surowca_ibfk_2
+        foreign key (id_produktu) references PRODUKT (id_produktu)
+            on update cascade
+);
+
+create index id_produkcji
+    on ZUZYCIE_SUROWCA (id_produkcji);
+
+create index id_produktu
+    on ZUZYCIE_SUROWCA (id_produktu);
+
+INSERT INTO PRODUKT 
+(nazwa, typ_produktu, data_utworzenia) VALUES
+('Piana PE 5mm - Rolka', 'Surowiec Rolka', NOW()),
+('Piana PE 10mm - Rolka', 'Surowiec Rolka', NOW()),
+('Arkusz 5mm 1000x2000', 'Wyrób Gotowy Arkusz', NOW()),
+('Worek 10mm 500x500', 'Wyrób Gotowy Worek', NOW()),
+('Folia Bąbelkowa B1', 'Surowiec Rolka', NOW());
+
+
+INSERT INTO PRODUKT_SPECYFIKACJA 
+(id_produktu, grubosc_mm, szerokosc_m, dlugosc_m, material) VALUES
+(1, 5.00, 1.00, 100.00, 'Piana PE'),
+(2, 10.00, 1.00, 50.00, 'Piana PE'),
+(3, 5.00, 1.00, 2.00, 'Piana PE'),
+(4, 10.00, 0.50, 0.50, 'Piana PE'),
+(5, 0.05, 1.20, 100.00, 'Bąbel 3W');
+
+
+INSERT INTO STAN_MAGAZYNOWY 
+(id_produktu, aktualna_ilosc, data_ostatniej_zmiany) VALUES
+(1, 50.00, NOW()),
+(2, 20.00, NOW()),
+(3, 0.00, NOW()),
+(4, 0.00, NOW()),
+(5, 100.00, NOW());
