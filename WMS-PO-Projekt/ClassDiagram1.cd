@@ -184,14 +184,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="WmsProdukcja.MauiProgram">
-    <Position X="0.5" Y="0.75" Width="1.5" />
+    <Position X="1" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MauiProgram.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WmsProdukcja.AppShell">
-    <Position X="2.25" Y="0.75" Width="1.5" />
+    <Position X="2.75" Y="14.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>AppShell.xaml.cs</FileName>

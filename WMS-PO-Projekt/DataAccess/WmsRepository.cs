@@ -430,7 +430,7 @@ public class WmsRepository
                 .Include(s => s.Specyfikacje)
                 .Include(s => s.StanMagazynowy)
                 .Where(s => s.Specyfikacje.Any(sp => sp.GruboscMm == specWyrobu.GruboscMm && sp.SzerokoscM == szukanaSzerokosc))
-                .Cast<Produkt>() // <--- DODAJ TO
+                .Cast<Produkt>()
                 .ToList();
         }
         // LOGIKA DLA ARKUSZA
@@ -441,7 +441,7 @@ public class WmsRepository
                 .Include(s => s.StanMagazynowy)
                 .Where(s => s.Specyfikacje.Any(sp => sp.GruboscMm == specWyrobu.GruboscMm && 
                                                      (sp.SzerokoscM == specWyrobu.SzerokoscM || sp.SzerokoscM == specWyrobu.DlugoscM)))
-                .Cast<Produkt>() // <--- DODAJ TO
+                .Cast<Produkt>()
                 .ToList();
         }
 

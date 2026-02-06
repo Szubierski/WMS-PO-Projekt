@@ -177,7 +177,6 @@ public partial class ProductionDetailsViewModel : BaseViewModel
             }
             else
             {
-                // Dla pozostałych statusów używamy starej, prostej metody
                 await Task.Run(() => _repository.AktualizujStatusProdukcji(IdProdukcji, nowyStatus));
             }
 
